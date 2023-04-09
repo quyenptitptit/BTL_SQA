@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-16">
+<title>Registration</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+</head>
+<body>
+
+	<!-- create navigation bar ( header) -->
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#" th:href="@{/}">Bảo hiểm y tế</a>
+			</div>
+		</div>
+	</nav>
+
+<br>
+<br>
+	<!-- Create HTML registration form -->
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+
+				<!-- success message -->
+				<div th:if="${param.success}">
+					<div class="alert alert-info">Thay đổi thành công</div>
+				</div>
+
+				<h1>Khai báo thông tin</h1>
+
+				<form th:action="@{/khaibao}" method="post" th:object="${currentUser}">
+					<div class="form-group">
+						<label class="control-label" for="firstName"> Họ (*) </label>
+						<input id="firstName" class="form-control" th:field="*{firstName}" th:value= "${currentUser.firstName}"
+							required autofocus="autofocus" />
+					</div>
+
+					<div class="form-group">
+						<label class="control-label" for="lastName"> Tên (*) </label> <input
+							id="lastName" class="form-control" th:field="*{lastName}" th:value= "${currentUser.lastName}"
+							required autofocus="autofocus" />
+					</div>
+
+					<div class="form-group">
+						<label class="control-label" for="email"> Email (*) </label> <input
+							id="email" type="email" class="form-control" th:field="*{email}"
+							required autofocus="autofocus" />
+					</div>
+
+					<div class="form-group">
+						<label class="control-label" for="password"> Mật khẩu (*) </label> <input
+							id="password" class="form-control" type="password" th:value= "${currentUser.password}"
+							th:field="*{password}" required autofocus="autofocus" />
+					</div>
+
+					<div class="form-group">
+						<label class="control-label" for="maBHYT"> Mã BHYT (*) </label>
+						<input
+								id="maBHYT" class="form-control" th:value= "${currentUser.maBHYT}"
+								th:field="*{maBHYT}" required autofocus="autofocus" />
+					</div>
+
+					<div class="form-group">
+						<label class="control-label" for="cmnd"> CMND/CCCD (*) </label>
+						<input
+								id="cmnd" class="form-control" th:value= "${currentUser.cmnd}"
+								th:field="*{cmnd}" required autofocus="autofocus" />
+					</div>
+
+					<div class="form-group">
+						<label class="control-label" for="address"> Địa chỉ (*) </label>
+						<input
+								id="address" class="form-control" th:value= "${currentUser.address}"
+								th:field="*{address}" required autofocus="autofocus" />
+					</div>
+
+					<div class="form-group">
+						<label class="control-label" for="phoneNumber"> Số Điện Thoại (*) </label>
+						<input
+								id="phoneNumber" class="form-control" type="tel" pattern="[0-9]{0,10}" th:value= "${currentUser.phoneNumber}"
+								th:field="*{phoneNumber}" required autofocus="autofocus" />
+					</div>
+
+					<div class="form-group">
+						<label class="control-label" for="coquanBHYT"> Cơ quan BHYT (*) </label>
+						<input
+								id="coquanBHYT" class="form-control" th:value= "${currentUser.coquanBHYT}"
+								th:field="*{coquanBHYT}" required autofocus="autofocus" />
+					</div>
+
+					<div class="form-group">
+						<button type="submit" class="btn btn-success">Thay Đổi</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
