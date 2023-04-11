@@ -43,7 +43,7 @@
 				<form th:action="@{/khaibao}" method="post" th:object="${currentUser}">
 
 					<div class="form-group">
-						<p th:text = "${currentUser.email}"></p>
+						<h2 class="control-label" for="email" th:text = "${currentUser.email}"></h2>
 					</div>
 
 					<div class="form-group">

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-16">
+<title>Registration</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+</head>
+<body>
+
+	<!-- create navigation bar ( header) -->
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#" th:href="@{/payment/trangchu}">Bảo hiểm y tế</a>
+			</div>
+		</div>
+	</nav>
+
+<br>
+<br>
+	<!-- Create HTML registration form -->
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+
+				<!-- success message -->
+				<div th:if="${param.success}">
+					<div class="alert alert-info">Thêm thành công</div>
+				</div>
+
+				<h1>Tính phí bảo hiểm y tế</h1>
+
+				<form th:each=" currentUser : ${currentUsers}">
+                    <br>
+					<p>Mã BHYT: <b th:text = "${currentUser.maBHYT}"></b></p>
+					<p>Họ và tên: <b th:text = "${currentUser.firstName} + ${currentUser.lastName}"></b></p>
+					<p>CCCD: <b th:text = "${currentUser.cmnd}"></b></p>
+					<p>Địa chỉ: <b th:text = "${currentUser.address}"></b></p>
+					<p>Sđt: <b th:text = "${currentUser.phoneNumber}"></b></p>
+					<p>Cơ quan tiếp nhận: <b th:text = "${currentUser.coquanBHYT}"></b></p>
+                    <!-- <div th:with = "currentUser != ${currentUsers[0]}">
+                        <form th:action="@{/payment/removeUser}" method="post" th:object="currentUser">
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-success">Bỏ người</button>
+                            </div>
+                        </form>
+                    </div> -->
+				</form>
+
+				<form th:action="@{/payment/addPayment}" method="get">
+					<div class="form-group">
+						<button type="submit" class="btn btn-success">Thêm người</button>
+					</div>
+				</form>
+
+				<form th:action="@{/payment/tinhtien}" method="get">
+					<div class="form-group">
+						<button type="submit" class="btn btn-success">Tính tiền</button>
+					</div>
+				</form>
+
+			</div>
+		</div>
+	</div>
+</body>
+</html>

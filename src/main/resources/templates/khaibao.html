@@ -43,10 +43,7 @@
 				<form th:action="@{/khaibao}" method="post" th:object="${currentUser}">
 
 					<div class="form-group">
-						<label class="control-label" for="email"> Email (*) </label>
-						<input
-							id="email" type="email" class="form-control" th:field="*{email}" th:value = "${currentUser.email}"
-							required autofocus="autofocus" readonly/>
+						<p th:text = "${currentUser.email}"></p>
 					</div>
 
 					<div class="form-group">
