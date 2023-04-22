@@ -90,6 +90,18 @@ public class PaymentController {
 
     @PostMapping(value = "/addUser")
     public String addUser(@ModelAttribute("addUser") UserRegistrationDto addUser) {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String userName;
+
+        if (principal instanceof UserDetails) {
+            userName = ((UserDetails) principal).getUsername();
+        } else {
+            userName = principal.toString();
+        }
+
+        if (!userService.checkHoKhau(addUser.getCmnd(), userName)) {
+            return "redirect:/payment/addPayment?error";
+        }
         users.add(addUser);
         return "redirect:/payment/addPayment?success";
     }

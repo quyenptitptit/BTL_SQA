@@ -16,10 +16,11 @@ public class KhaiBaoController {
     @Autowired
     private UserService userService;
 
+    private String userName;
+
     @GetMapping
     public ModelAndView showKhaiBao() {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        String userName;
 
         if (principal instanceof UserDetails) {
             userName = ((UserDetails) principal).getUsername();
@@ -36,6 +37,7 @@ public class KhaiBaoController {
 
     @PostMapping
     public String updateDataBase(@ModelAttribute("currentUser") UserRegistrationDto registrationDto) {
+        registrationDto.setMaBHYT(userName);
         userService.update(registrationDto);
         return "redirect:khaibao?success";
     }

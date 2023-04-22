@@ -10,17 +10,20 @@ public class UserRegistrationDto {
 	private String address;
 	private String phoneNumber;
 	private String coquanBHYT;
-	
-	public UserRegistrationDto(){
-		
+	private String birthDay;
+
+	public UserRegistrationDto() {
+
 	}
 
-	public UserRegistrationDto(String firstName, String lastName, String email, String password, String maBHYT, String cmnd, String address, String phoneNumber, String coquanBHYT) {
+	public UserRegistrationDto(String firstName, String lastName, String email, String password, String maBHYT,
+			String birthDay, String cmnd, String address, String phoneNumber, String coquanBHYT) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.password = password;
 		this.maBHYT = maBHYT;
+		this.birthDay = birthDay;
 		this.cmnd = cmnd;
 		this.address = address;
 		this.phoneNumber = phoneNumber;
@@ -30,24 +33,31 @@ public class UserRegistrationDto {
 	public String getFirstName() {
 		return firstName;
 	}
+
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
+
 	public String getLastName() {
 		return lastName;
 	}
+
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+
 	public String getEmail() {
 		return email;
 	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 	public String getPassword() {
 		return password;
 	}
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
@@ -91,4 +101,13 @@ public class UserRegistrationDto {
 	public void setCoquanBHYT(String coquanBHYT) {
 		this.coquanBHYT = coquanBHYT;
 	}
+
+	public void setBirthDay(String birthDay) {
+		this.birthDay = birthDay;
+	}
+
+	public String getBirthDay() {
+		return birthDay;
+	}
+
 }

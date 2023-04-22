@@ -38,26 +38,32 @@
 					<div class="alert alert-info">Thêm thành công</div>
 				</div>
 
+				<div th:if="${param.error}">
+					<div class="alert alert-danger">Không phải gia đình</div>
+				</div>
+
 				<h1>Thêm người tính bảo hiểm y tế</h1>
 
 				<form th:action="@{/payment/addUser}" method="post" th:object="${addUser}">
                     <div class="form-group">
 						<label class="control-label" for="firstName"> Họ (*) </label>
-						<input id="firstName" class="form-control" th:field="*{firstName}"
+						<input id="firstName" class="form-control" th:field="*{firstName}" pattern="[A-Za-z]{1,32}"
 							required autofocus="autofocus" />
 					</div>
 
 					<div class="form-group">
 						<label class="control-label" for="lastName"> Tên (*) </label> <input
-							id="lastName" class="form-control" th:field="*{lastName}"
+							id="lastName" class="form-control" th:field="*{lastName}" pattern="[A-Za-z]{1,32}"
 							required autofocus="autofocus" />
 					</div>
+
                     <div class="form-group">
 						<label class="control-label" for="maBHYT"> Mã BHYT (*) </label>
 						<input
 								id="maBHYT" class="form-control"
 								th:field="*{maBHYT}" required autofocus="autofocus" />
 					</div>
+
                     <div class="form-group">
 						<label class="control-label" for="cmnd"> CMND/CCCD (*) </label>
 						<input
@@ -80,9 +86,15 @@
 
 					<div class="form-group">
 						<label class="control-label" for="coquanBHYT"> Cơ quan BHYT (*) </label>
-						<input
+						<select
 								id="coquanBHYT" class="form-control"
-								th:field="*{coquanBHYT}" required autofocus="autofocus" />
+								th:field="*{coquanBHYT}" required autofocus="autofocus">
+
+								<option value="Hà Nội">Hà Nội</option>
+								<option value="TP.HCM">TP.HCM</option>
+								<option value="Cần Thơ">Cần Thơ</option>
+								<option value="Đà Nẵng">Đà Nẵng</option>
+						</select>
 					</div>
 
 					<div class="form-group">

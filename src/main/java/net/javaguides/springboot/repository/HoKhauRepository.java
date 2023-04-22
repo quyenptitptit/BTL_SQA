@@ -3,9 +3,9 @@ package net.javaguides.springboot.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import net.javaguides.springboot.model.User;
+import net.javaguides.springboot.model.HoKhau;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
-	User findByMaBHYT(String maBHYT);
+public interface HoKhauRepository extends JpaRepository<HoKhau, Long> {
+    HoKhau findByCmnd(String cmnd);
 }

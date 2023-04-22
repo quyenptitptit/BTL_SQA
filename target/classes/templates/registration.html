@@ -43,13 +43,13 @@
 				<form th:action="@{/registration}" method="post" th:object="${user}">
 					<div class="form-group">
 						<label class="control-label" for="firstName"> Họ (*) </label>
-						<input id="firstName" class="form-control" th:field="*{firstName}"
+						<input id="firstName" class="form-control" th:field="*{firstName}" pattern="[A-Za-z]{1,32}"
 							required autofocus="autofocus" />
 					</div>
 
 					<div class="form-group">
 						<label class="control-label" for="lastName"> Tên (*) </label> <input
-							id="lastName" class="form-control" th:field="*{lastName}"
+							id="lastName" class="form-control" th:field="*{lastName}" pattern="[A-Za-z]{1,32}"
 							required autofocus="autofocus" />
 					</div>
 
@@ -60,23 +60,29 @@
 					</div>
 
 					<div class="form-group">
+						<label class="control-label" for="maBHYT"> Mã BHYT (*) </label>
+						<input
+								id="maBHYT" class="form-control"
+								th:field="*{maBHYT}" pattern="[0-9]{8,10}" title="Chỉ sử dụng số" required autofocus="autofocus" />
+					</div>
+
+					<div class="form-group">
 						<label class="control-label" for="password"> Mật khẩu (*) </label> <input
 							id="password" class="form-control" type="password"
 							th:field="*{password}" required autofocus="autofocus" />
 					</div>
 
 					<div class="form-group">
-						<label class="control-label" for="maBHYT"> Mã BHYT (*) </label>
-						<input
-								id="maBHYT" class="form-control"
-								th:field="*{maBHYT}" required autofocus="autofocus" />
+						<label class="control-label" for="birthDay"> Ngày sinh (*) </label> <input
+							id="birthDay" class="form-control" type="date"
+							th:field="*{birthDay}" required autofocus="autofocus" />
 					</div>
 
 					<div class="form-group">
 						<label class="control-label" for="cmnd"> CMND/CCCD (*) </label>
 						<input
 								id="cmnd" class="form-control"
-								th:field="*{cmnd}" required autofocus="autofocus" />
+								th:field="*{cmnd}" pattern="[0-9]{12,12}" required autofocus="autofocus" />
 					</div>
 
 					<div class="form-group">
@@ -89,15 +95,21 @@
 					<div class="form-group">
 						<label class="control-label" for="phoneNumber"> Số Điện Thoại (*) </label>
 						<input
-								id="phoneNumber" class="form-control" type="tel" pattern="[0-9]{0,10}"
+								id="phoneNumber" class="form-control" type="tel" pattern="[0-9]{0,10}" title="Chỉ sử dụng số"
 								th:field="*{phoneNumber}" required autofocus="autofocus" />
 					</div>
 
 					<div class="form-group">
 						<label class="control-label" for="coquanBHYT"> Cơ quan BHYT (*) </label>
-						<input
+						<select
 								id="coquanBHYT" class="form-control"
-								th:field="*{coquanBHYT}" required autofocus="autofocus" />
+								th:field="*{coquanBHYT}" required autofocus="autofocus">
+
+								<option value="Hà Nội">Hà Nội</option>
+								<option value="TP.HCM">TP.HCM</option>
+								<option value="Cần Thơ">Cần Thơ</option>
+								<option value="Đà Nẵng">Đà Nẵng</option>
+						</select>
 					</div>
 
 					<div class="form-group">
